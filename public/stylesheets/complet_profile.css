@@ -1,0 +1,85 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans|PT+Serif&display=swap");
+* {
+  box-sizing: border-box;
+  font-family: 'PT Serif', serif;
+  font-family: 'Noto Sans', sans-serif; }
+
+body {
+  background: #e9e9e9; }
+
+form {
+  width: 60%;
+  margin: 20px auto;
+  text-align: center;
+  padding: 0.5em;
+  background: #fff;
+  box-shadow: 2px 1px 2px 2px  lightgray; }
+  form .wellcome {
+    font-size: 20px; }
+  form ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row; }
+    form ul label::before {
+      background-color: white;
+      color: white;
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: 28px;
+      transition-duration: 0.4s;
+      transform: scale(0);
+      opacity: 0.9; }
+    form ul label img {
+      display: block;
+      height: 100%;
+      width: 100%;
+      transition-duration: 0.2s;
+      transform-origin: 50% 50%; }
+    form ul :checked + label::before {
+      content: "✓";
+      background-color: #6b5b95;
+      transform: scale(1);
+      font-size: 30px; }
+    form ul li {
+      font-size: 12px;
+      width: 130px; }
+    form ul input[type="checkbox"][id^="cb"] {
+      display: none; }
+    form ul label {
+      border: 1px solid #fff;
+      display: block;
+      position: relative;
+      margin: 10px;
+      cursor: pointer;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none; }
+  form button {
+    padding: 0.8em;
+    background: #d69c2f;
+    width: 200px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    transition: all 0.1s; }
+  form button:disabled {
+    opacity: 0.5; }
+
+@media (max-width: 900px) {
+  form {
+    width: 100%; 
+  } }
+
+
+   

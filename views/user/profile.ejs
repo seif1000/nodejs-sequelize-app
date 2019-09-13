@@ -1,0 +1,200 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/stylesheets/personal_profile.css">
+    
+<!-- <h1><%= user.username%></h1> -->
+<%- include('../includes/navbar.ejs') %>
+<%- include('../includes/toggler.ejs') %>
+
+
+<%if(me){%>
+    <form action="/user/add-avatar" method="POST" enctype="multipart/form-data">
+        <div class="cover">
+          
+                    <h4><%= user.username%></h4> 
+
+            
+           
+        <div class="image-upload">
+            <img id="image" src="/<%= profile.image %>" alt="user">
+            <input type="file" name="image" id="upload-photo"  >
+            <label for="upload-photo">
+                <i class="fas fa-cloud-upload-alt fa-lg"></i>
+            </label>
+            
+        </div>
+
+        <button id="submitbutton"  type="submit" disabled='true'   >submit</button>
+        </div>
+   
+</form>
+<script>
+   
+        var fileTag = document.getElementById("upload-photo"),
+        preview = document.getElementById("image");
+     
+  fileTag.addEventListener("change", function() {
+    changeImage(this);
+});
+
+function changeImage(input) {
+    console.log("hhhh")
+  var reader;
+
+  if (input.files && input.files[0]) {
+    reader = new FileReader();
+
+    reader.onload = function(e) {
+      preview.setAttribute('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+const addBtn = document.querySelector('#submitbutton');
+const imgField =  document.querySelector('#upload-photo');
+
+imgField.addEventListener('change',()=>{
+        if(imgField.value){
+            addBtn.disabled = false;
+        }
+        
+    })
+    
+</script>
+   
+<%}else{%>
+ <form action="/user/follow" method="POST">
+    <div class="cover">
+            <h4><%= user.username%></h4>
+            <div class="image-upload">
+                <img id="image" src="/<%= profile.image %>" alt="user">
+                <input type="hidden" name="user" value="<%= user.id %>">
+            </div>
+              
+        <button id="followbutton" type="submit">follow</button>
+           
+    </div>
+
+  
+     
+    
+</form>
+<%}%>
+
+<div class="info">
+     <button class="post"> post (<%= profile.post%>) <i class="fas fa-newspaper"></i></button>
+     <button class="followers">followers <i class="fal fa-users-crown"></i> </button>
+     <button class="followed">followed <i class="far fa-address-book"></i></button>
+     <button class="intrest">intrest<i class="fab fa-angellist"></i></button> 
+            
+</div>
+<div class="content">
+        <ul id="post">
+               
+
+        <% posts.forEach(post=>{%>
+            <li>
+                <a href="/post/<%=post.id%>">
+            <div class="profile">
+                <div>
+                        <img src="/<%= profile.image%>" alt="">
+                </div>
+                <div>
+                        <p><%= user.username%></p>
+                        <p class="moment"><%= moment(post.createdAt).format('MMMM-DD-YYYY')%></p>
+                </div>
+               
+            </div>
+
+             
+             <p><%= post.content%></p>
+             <img  src="/<%= post.image %>" alt="alt">
+             </a>
+            </li>
+
+                 
+         <%})%>
+         </ul>
+            <ul id="followers">
+            
+                <% followers.forEach(follower =>{ %>
+                       <li> <i class="fas fa-user-check"style="color: #6b5b95;padding-right:5px;"></i><%= follower.username %> </li>
+            
+               <% })%>
+            
+            </ul>
+            <ul id="followed">
+             
+             
+                 <% followeds.forEach(followed =>{ %>
+                        <li><i class="fas fa-user-check" style="color: #6b5b95;padding-right:5px;"></i> <%= followed.username %> </li>
+                        
+                 <% }) %>
+            </ul>
+            <ul id="intrest">
+               
+                    <% interst.forEach(i=>{ %>
+                          <li><i style="color: #6b5b95;padding-right:5px;" class="fab fa-angellist"></i><%= i %></li>   
+                
+                    <%})%>
+             </ul>
+            
+            
+            
+            <!-- <h5>response<%= profile.response%></h5> -->
+        
+        
+</div>
+  
+
+
+<script>
+
+
+    const buttons = document.querySelectorAll('.info button');
+    const contets = document.querySelectorAll('.content ul');
+
+    window.onload = function (){
+        console.log(buttons)
+        contets[0].style.display = 'block';
+    // buttons[0].classList.add('active')
+    buttons[0].style.borderBottom = '3px solid #6b5b95';
+        
+    }
+    buttons.forEach(btn=>{
+        btn.addEventListener('click',showContent);
+    })
+    function showContent(e){
+        buttons.forEach(btn=>{
+            btn.style.borderBottom = " none"
+        })
+        e.target.style.borderBottom = '3px solid #6b5b95';
+        targetContent = e.target.className;
+        contets.forEach(c=>{
+            if(c.id ==targetContent){
+                c.style.display ="block";
+            }else{
+                c.style.display ="none";
+            }
+            
+        
+            
+            
+        })
+        
+}
+
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+
+</script>
+
+<%- include('../includes/footer.ejs') %>

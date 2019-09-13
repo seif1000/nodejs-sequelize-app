@@ -1,0 +1,146 @@
+
+
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="stylesheets/complet_profile.css">
+<title><%= title%></title>
+</head>
+<body>
+        
+    
+
+  
+   <form action="/profile" method="POST" enctype="multipart/form-data">
+    <p class="wellcome">you have to choose three subject</p>
+      
+
+    
+       <ul>
+            <li><input type="checkbox"  id="cb1" name="interst" value="usa" /> USA
+              <label for="cb1"><img src="http://lorempixel.com/100/100" /></label>
+            </li>
+            <li><input type="checkbox" id="cb2" name="interst" value="maka"  />ORAN
+              <label for="cb2"><img src="http://lorempixel.com/101/101" /></label>
+            </li>
+            <li><input type="checkbox" id="cb3" name="interst" value="alg" />MALI
+              <label for="cb3"> <img src="http://lorempixel.com/102/102" /></label>
+            </li>
+            <li><input type="checkbox" id="cb4" name="interst" value="ger"  />HONDA
+              <label for="cb4"><img src="http://lorempixel.com/103/103" /></label>
+            </li>
+            <li><input type="checkbox"  id="cb1" name="interst" value="usa" />USA
+                <label for="cb1"><img src="http://lorempixel.com/100/100" /></label>
+              </li>
+              <li><input type="checkbox" id="cb2" name="interst" value="maka"  />ORAN
+                <label for="cb2"><img src="http://lorempixel.com/101/101" /></label>
+              </li>
+              <li><input type="checkbox" id="cb3" name="interst" value="alg" />MALI
+                <label for="cb3"> <img src="http://lorempixel.com/102/102" /></label>
+              </li>
+              <li><input type="checkbox" id="cb4" name="interst" value="ger"  />HONDA
+                <label for="cb4"><img src="http://lorempixel.com/103/103" /></label>
+              </li>
+              <li><input type="checkbox" id="cb2" name="interst" value="maka"  />ORAN
+                <label for="cb2"><img src="http://lorempixel.com/101/101" /></label>
+              </li>
+              <li><input type="checkbox" id="cb3" name="interst" value="alg" />MALI
+                <label for="cb3"> <img src="http://lorempixel.com/102/102" /></label>
+              </li>
+              <li><input type="checkbox"  id="cb1" name="interst" value="usa" /> USA
+                <label for="cb1"><img src="http://lorempixel.com/100/100" /></label>
+              </li>
+              <li><input type="checkbox" id="cb2" name="interst" value="maka"  />ORAN
+                <label for="cb2"><img src="http://lorempixel.com/101/101" /></label>
+              </li>
+              <li><input type="checkbox" id="cb3" name="interst" value="alg" />MALI
+                <label for="cb3"> <img src="http://lorempixel.com/102/102" /></label>
+              </li>
+              <li><input type="checkbox" id="cb4" name="interst" value="ger"  />HONDA
+                <label for="cb4"><img src="http://lorempixel.com/103/103" /></label>
+              </li>
+              <li><input type="checkbox"  id="cb1" name="interst" value="usa" />USA
+                  <label for="cb1"><img src="http://lorempixel.com/100/100" /></label>
+                </li>
+    </ul> 
+       <button id="submitbutton"  type="submit" disabled >submit</button>
+      
+   </form>
+
+  
+
+
+
+   
+  
+   <script >
+//     var fileTag = document.getElementById("upload-photo"),
+//         preview = document.getElementById("image");
+     
+//   fileTag.addEventListener("change", function() {
+//     changeImage(this);
+// });
+
+// function changeImage(input) {
+//     console.log("hhhh")
+//   var reader;
+
+//   if (input.files && input.files[0]) {
+//     reader = new FileReader();
+
+//     reader.onload = function(e) {
+//       preview.setAttribute('src', e.target.result);
+//     }
+
+//     reader.readAsDataURL(input.files[0]);
+//   }
+// }
+
+//  const btn = document.querySelector('input[type=submit]');
+//  const job = document.querySelector('.job input');
+//  const interst = document.querySelector('input[type=checkbox]');
+
+
+
+// const job = document.querySelector('input[type=text]');
+// const fileImage = document.querySelector('input[type=file]');
+ const ch  = document.querySelectorAll('input[type=checkbox');
+
+ let i =0;
+
+ 
+  ch.forEach(el=>{
+   el.addEventListener('change',function(){
+        if(el.checked){
+          i+=1
+         checkform();
+        }else{
+          i-=1;
+        
+          checkform();
+        }
+       
+   })
+
+
+ })
+function checkform() {
+   console.log(i)
+    var cansubmit = true;
+
+        if (i<2){
+            cansubmit = false;
+    }
+
+    document.getElementById('submitbutton').disabled = !cansubmit;
+
+}
+window.onload = checkform;
+ 
+
+
+
+
+
+
+
+   </script>
+  

@@ -1,0 +1,80 @@
+
+
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="stylesheets/register__login.css">
+<body>
+
+<%- include('../includes/navbar.ejs') %>
+
+<div class="container">
+        
+            <div class="form">
+                    <div class="login__register">
+                       <div class="login">
+                        login
+                       </div>
+                       <div class="register">
+                        register
+                      </div>
+                    </div>
+            
+                    <div class="ramdan">
+                          
+                            <form class=" form__register" action="/user/register" method="POST">
+                                <div>
+                                        <h3>register</h3>
+                                </div>
+                                <div >
+                                    <label for="username">username <span style="color: red">*</span></label>
+                                    <input type="text" name="username" id="username" placeholder="username">
+                                </div>
+                                <div>
+                                    <label for="email">email<span style="color: red">*</span></label>
+                                    <input type="text" name="email" id="email" placeholder="email">
+                                </div>
+                                <div>
+                                    <label for="email">password <span style="color: red">*</span></label>
+                                    <input type="password" name="password" id="password" placeholder="password">
+                                </div>
+                                <div>
+                                    <input type="submit" value="submit">
+                                 </div>
+                                 
+                                 <p>copyright&copy;2019</p>
+                                 
+                            
+                            </form>
+                            
+                          
+                            <form  class=" form__login" action="/user/login" method="POST">
+                                <div>
+                                        <h3>conexion</h3>
+                                </div>
+                                <div>
+                                    <label for="email">email <span style="color: red">*</span></label>
+                                    <input type="text" name="email" id="email" placeholder="email">
+                                </div>
+                                <div>
+                                    <label for="email">password<span style="color: red">*</span></label>
+                                    <input type="password" name="password" id="password" placeholder="password">
+                                </div>
+                                <div>
+                                        <input type="submit" value="submit">
+                                     </div>
+                                
+                                     <p>copyright&copy;2019</p>
+                                           
+                                
+                            </form>
+                    </div>
+                   
+                    
+            </div>
+
+            <script src="/js/main.js"></script>
+                    
+</div>
+
+
+
+<%- include('../includes/footer.ejs') %>

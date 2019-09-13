@@ -1,0 +1,26 @@
+<nav>
+    <div>
+       <p  class="brand">jawbkom</p>
+    </div>
+   
+    
+    <div class="go_to">
+        <% if(auth) {%>
+            <a href="/home">home</a>
+            <a href="">About</a>
+            <a href="/user/logout">sing-out <i class="fas fa-sign-out-alt" ></i></a>
+            <a href="/user/profile?edit=true" id="last"><img src="/<%= navImage %>" alt="profile"> </a>
+            <div class="toggler" onclick="openNav()">
+                <div class="t-1"></div>
+                <div class="t-1"></div>
+                <div class="t-1"></div>
+            </div>
+    
+        <% }else{ %>
+         
+        <%} %>
+    </div>
+          
+    
+   
+</nav>

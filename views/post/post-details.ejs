@@ -1,0 +1,87 @@
+<%- include('../includes/head.ejs') %>
+
+<link rel="stylesheet" href="/stylesheets/post-detail.css">
+<title><%= title%></title>
+</head>
+<body>
+        <%- include('../includes/navbar.ejs') %>
+        <%- include('../includes/toggler.ejs') %>
+<div class="post">
+
+    <div id="profile">
+    <div>
+     <img src="/<%=myProfile.image%>" alt="image">
+    </div>
+    <div>
+     <p><%= post.fk_username%> </p>
+    </div>
+    
+   </div>
+
+
+  
+ <p><%= post.content %></p>
+
+ <img src="/<%= post.image%>" alt="image">
+</div>
+<div class="conversion">
+        <div class="like_answer">
+                <% if(answers){%>
+                    <p><%=answers.length%> <i class="fas fa-comment"></i></p>
+                 <%}%>
+                
+                <form action="/post/like" method="post">
+                    <input type="hidden" name="postID" value="<%= post.id %>">
+                    <button type="submit"><%= likes %> <i class="fas fa-heart"></i></button>
+                </form>
+        </div>
+       
+        <form class="answer" action="/post/add-comment" method="POST">
+            <input type="hidden" name="postID" value="<%= post.id %>">
+           
+            <input type="text" name="content" placeholder="add comment ...">
+            <button type="submit">add</button>
+           
+        </form>
+        <div class="anw_lik">
+               
+                <% if(answers) { %>
+            <div>
+                    <% answers.forEach(answer => { %>
+                        <div class="profile">
+                            <div>
+                                    <img src="/<%= answer.img %>" alt="img">
+                            </div>
+                            <div>
+                                    <p><%= answer.fk_username %></p>
+                            </div>
+                            <div class="comment">
+                                    <p><%= answer.content %></p>
+                            </div>
+                           
+                        </div>
+                       
+                      
+                  
+                        
+                   <% }) %>
+            </div>
+            <% } else { %>
+                <p>no comment</p>
+           <% } %>
+        </div>
+</div>
+<script>
+
+    function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+        
+    
+   
+<%- include('../includes/footer.ejs') %>

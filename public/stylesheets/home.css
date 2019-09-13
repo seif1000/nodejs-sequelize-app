@@ -1,0 +1,308 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans|PT+Serif&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7; }
+
+nav {
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 2px 2px 5px #e6e6e6;
+  padding: 0.6em 3em;
+ }
+ .brand{
+  font-family: 'Gloria Hallelujah', cursive;
+ }
+
+
+
+  .toggler {
+    width:40px;
+    height: 40px;
+    
+   
+    display:none;
+    float: right;
+    
+  }
+  .toggler:hover >  div:nth-child(1), div:nth-child(2){
+    width: 100%;
+  }
+  .toggler:hover >  div:nth-child(2){
+    width: 100%;
+  }
+  
+  .toggler div{
+    padding: 3px;
+    margin-bottom: 3px;
+    background:grey;
+    border-radius: 3px;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .toggler div:nth-child(1){
+    width: 70%;
+  }
+
+  .toggler div:nth-child(2){
+    width: 50%;
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  .sidenav a img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  
+nav .brand {
+  font-family: 'Gloria Hallelujah', cursive;
+  color: #6b5b95;
+  font-size: 20px; }
+
+nav .go_to a {
+  text-decoration: none;
+  color: #999999;
+  padding-bottom: 0.5em;
+  padding-right: 0.5em; 
+  float: right;
+}
+
+nav .go_to a img {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%; }
+
+nav .go_to a i {
+  color: #999999; }
+
+footer {
+  width: 100%;
+  height: 120px;
+  background: black;
+  color: white;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-content: center;
+  padding: 1em;
+  background: #5a5a5a;
+  color: lightgray;
+  margin-top: 50px; }
+  footer .found_me {
+    margin-top: 1em; }
+    footer .found_me .fab {
+      font-size: 20px;
+      margin-right: 6px; }
+    footer .found_me a {
+      text-decoration: none;
+      color: lightgray; }
+
+* {
+  box-sizing: border-box;
+  font-family: 'PT Serif', serif;
+  font-family: 'Noto Sans', sans-serif; }
+
+.add-post {
+  border-color: transparent;
+  border-radius: 6px;
+  width: 60%;
+  margin: 50px auto;
+  padding: 1.5em;
+  background: white;
+  box-shadow: 2px 2px 5px 2px lightgrey; }
+  .add-post .user {
+    margin-bottom: 1em; }
+    .add-post .user img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%; }
+    .add-post .user span {
+      margin-left: 5px; }
+  .add-post label {
+    display: block;
+    margin-bottom: 7px; }
+  .add-post select, .add-post textarea {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 8px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: #d8d8d8; }
+  .add-post button {
+    outline: none;
+    border: none;
+    color: white;
+    padding: 7px 10px;
+    cursor: pointer;
+    background: #d69c2f;
+    transition: all 0.5s ease-out;
+   }
+    button:disabled{
+      background: #e1b666;
+      cursor: not-allowed;
+    }
+  .add-post .image-upload #upload-photo {
+    display: none; }
+  .add-post .image-upload .fas {
+    color: grey;
+    cursor: pointer; }
+
+.posts_users {
+  width: 60%;
+  margin: 50px auto; }
+  .posts_users .slider {
+    display: flex;
+    flex-flow: row;
+    position: relative; }
+    .posts_users .slider .slid {
+      font-size: 20px;
+      position: absolute;
+      color: grey;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      padding: 10px 15px;
+      background: white;
+      border-radius: 50%;
+      font-weight: bold;
+      box-shadow: 2px 2px 5px 2px lightgrey; }
+      .posts_users .slider .slid:hover {
+        box-shadow: 5px 3px 8px 2px lightgrey; }
+    .posts_users .slider .next {
+      right: -30px; }
+    .posts_users .slider .prev {
+      margin-right: 1em; }
+  .posts_users .users {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 0 0 32px 16px;
+    padding: 5px;
+    overflow-x: hidden;
+    transition: all 0.1s ease-in-out; }
+    .posts_users .users .user {
+      text-align: center;
+      min-width: 20%;
+      margin-bottom: 5px;
+      border-color: transparent;
+      border-radius: 5px;
+      padding: 10px;
+      margin-right: 16px;
+      background: #e0e0e0; }
+      .posts_users .users .user img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%; }
+      .posts_users .users .user a {
+        text-decoration: none;
+        color: black; }
+      .posts_users .users .user button {
+        outline: none;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        color: white;
+        font-weight: bold; }
+        .posts_users .users .user button.follow {
+          background: #d69c2f; }
+        .posts_users .users .user button.dismiss {
+          background-color: #86c5da; }
+  .posts_users .posts {
+    list-style-type: none;
+    margin: auto;
+    padding: 0px; }
+    .posts_users .posts .post {
+      width: 100%;
+      margin: 5px auto;
+      padding: 1em;
+      box-shadow: 2px 2px 5px 2px lightgrey; }
+      .posts_users .posts .post .moment {
+        color: grey; }
+      .posts_users .posts .post span {
+        float: right;
+        cursor: pointer;
+        font-weight: bold; }
+      .posts_users .posts .post a {
+        text-decoration: none;
+        color: black; }
+
+        @media (max-width:1200px){
+          .posts_users .users .user  button {
+        width: 90%;
+        margin:auto auto 5px;
+
+          }
+          .add-post{
+            width: 90%;
+          }
+
+        }
+        @media (max-width:900px ) {
+
+          .posts_users{
+             width: 90%;
+             margin: auto;;
+          }
+          .posts_users .users .user{
+            min-width: 25%;
+          }
+          
+        }
+
+        @media (max-width:600px){
+          .posts_users .users .user{
+            min-width: 45%;
+          }
+          .posts_users .slider .next{
+            right: -10px;
+          }
+          .go_to a{
+            display: none;
+          }
+          .toggler{
+            display:block;
+            float:right;
+
+           
+          }
+
+        }

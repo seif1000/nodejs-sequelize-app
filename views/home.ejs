@@ -1,0 +1,142 @@
+
+<%- include('includes/head.ejs') %>
+
+
+<link rel="stylesheet" href="stylesheets/home.css">
+				
+<title><%= title%></title>
+</head>
+<body>
+        <%- include('includes/navbar.ejs') %>
+        <%- include('includes/toggler.ejs') %>
+
+     
+
+     <form class="add-post" action="/post/add-post" method="POST" enctype="multipart/form-data">
+            <div class="user">
+                <img src="/<%= profile.image %>" alt=""><span> <%= user.username%></span>
+            </div>
+            <div>
+                <label for="title">subject</label>
+                <select name="title">
+                        <% intrest.forEach(i=>{%>
+                            <option name="<%= i %>" id=""><%=i%></option>
+                        <%})%>
+    
+                </select>
+                   
+                </option>
+                <!-- <input type="text" name="title" id="title" placeholder="computer, finance, tourism"> -->
+            </div>
+            <div class="image-upload">
+                <input type="file" name="image" id="upload-photo"  >
+                <label for="upload-photo"><i class="fas fa-camera"></i></label>
+            </div>
+            <div>
+                <label for="el">question</label>
+               <textarea name="content" id="content" cols="30" rows="5">How, What, How...</textarea>
+            </div>
+            <button type="submit" disabled="true" class="add-btn">publish</button>
+        
+    </form>
+  
+    
+
+  <div class="posts_users">
+        
+        <div class="slider">
+            
+            <div class="slid prev">❮</div>
+                <div class="users">
+             
+                   
+                        <% matchProfile.forEach(profile=>{%>
+                  <div class="user">
+                          <a href="/user/check-profile/<%= profile.userId %>?edit = false">
+                           
+                             <img src="<%= profile.image%>" alt="">
+                             <h3><%= profile.fk_username %></h3> 
+                             <form action="/user/follow" method="POST">
+                                  <input type="hidden" name= "user" value="<%= profile.userId %>">
+                                  <button  class = "follow" type="submit">follow</button>
+                                  <button class="dismiss">dismiss</button>
+                              
+                              </form>
+                           </a>
+                </div>
+                      <% }) %>
+                 
+ 
+          
+                           
+       </div>
+       <div class="slid next" >❯</div>
+        </div>
+    
+      
+    <class class="posts">
+        <div class="inner">
+            <% posts.forEach(post=>{%>
+            <div class="post">
+                <span class="dismiss">x </span>
+                <a href="/post/<%= post.id %>">
+                <p class="moment"><%=moment(post.createdAt).format('MMMM Do YYYYY') %></p>
+               <h3><%= post.title %></h3> 
+               <p><%= post.content %></p>
+               </a>
+            </div>
+            <% } )%>
+        </div>
+    </div>
+   
+  </div>
+
+
+  
+				
+  <script>
+
+
+
+    const x =    document.querySelectorAll('.dismiss');
+    x.forEach(element => {
+        element.addEventListener('click',dismiss)
+    });
+        function dismiss(){
+            const parent = this.parentNode;
+            parent.style.display = 'none'
+        }
+    const next = document.querySelector('.next');
+    const prev= document.querySelector('.prev');
+    next.addEventListener('click',()=>{
+        
+        document.querySelector('.users').scrollLeft += 250;
+    })
+    prev.addEventListener('click',()=>{
+       
+        document.querySelector('.users').scrollLeft += -250;
+    })
+
+    const imgField = document.querySelector('#upload-photo');
+    const addBtn = document.querySelector('.add-btn');
+    imgField.addEventListener('change',()=>{
+        if(imgField.value){
+            addBtn.disabled = false;
+        }
+        
+    })
+    
+   
+
+    function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+        
+  </script>
+   
+  
+<%- include('includes/footer.ejs') %>
