@@ -178,10 +178,11 @@ exports.followUser = (req, res, next)=>{
 
 }
 exports.addAvatar = (req, res, next)=>{
-    
+  
     req.user
     .getProfile()
     .then(profile=>{
+        console.log(req.file)
       const {path} = req.file;
       const {job} = req.body;
       profile.image = path;
