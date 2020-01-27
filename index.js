@@ -61,7 +61,7 @@ require('./utils/association');
 const PORT = process.env.PORT || 8080;
 
 sequelize
-.sync({force:true})
+.sync()
 
    .then(result=>{
      return result
