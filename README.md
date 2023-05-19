@@ -1,4 +1,4 @@
-# nodejs-sequelize-app
+# Aventique
 express app with signup and login. create, update post .upload image ,using express and sequelize
 
 ## Index
