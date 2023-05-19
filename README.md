@@ -30,18 +30,20 @@ Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.co
 
 4. Start the application
 
+	
 	```
-	$ npm run dev 
+	$ npm run dev
 	```
 5. Build the app
-        ```
-	
-	$ npm run build 
+       
+	```
+	$ npm run build
 	```
 	
 6. Unit test using jest
-        ```
-	$ npm test 
+       
+	```
+	$ npm test
 	```
 Your app should now be running on [localhost:3000](http://localhost:3000/).
 
